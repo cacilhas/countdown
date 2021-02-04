@@ -5,13 +5,14 @@
 
 typedef struct {
     WINDOW *stdscr;
-    time_t  start, end;
+    time_t  start, end, duration;
     int     width;
     WINDOW *min1;
     WINDOW *min10;
     WINDOW *sec1;
     WINDOW *sec10;
     WINDOW *sep;
+    WINDOW *progbar;
 } state_t;
 
 state_t *setup_window(WINDOW*, time_t);
