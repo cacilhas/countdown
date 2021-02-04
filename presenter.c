@@ -55,6 +55,8 @@ void mainloop(state_t *state) {
     box(state->progbar, 0, 0);
     const wchar_t *titles[] = {
         L"⏳ COUNTDOWN ⌛",
+        L"⏳ COUNTDOWN ⏳",
+        L"⌛ COUNTDOWN ⌛",
         L"⌛ COUNTDOWN ⏳",
     };
     int title_x = (state->width - 13) / 2;
@@ -70,7 +72,7 @@ void mainloop(state_t *state) {
         int msec = 1000 - (now.tv_usec / 1000);
         char msec_text[5];
         sprintf(msec_text, ".%03d", msec);
-        size_t title_i = msec < 500 ? 0 : 1;
+        size_t title_i = msec / 250;
 
         mvwaddwstr(state->stdscr, 0, title_x, titles[title_i]);
 
