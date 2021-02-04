@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include "k-utils.h"
 #include "presenter.h"
 
 static void setup(void);
@@ -13,7 +14,7 @@ int main(int argc, const char *argv[]) {
     time_t duration = 60;
 
     if (argc > 1)
-        duration = atoi(argv[1]);
+        duration = min(atoi(argv[1]), 3600);
 
     WINDOW *stdscr;
     if ((stdscr = initscr()) == NULL) {
@@ -22,7 +23,6 @@ int main(int argc, const char *argv[]) {
     }
     atexit(teardown);
     setup();
-
     mainloop(setup_window(stdscr, duration));
 
     return EXIT_SUCCESS;

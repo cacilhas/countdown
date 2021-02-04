@@ -3,7 +3,7 @@
 #include "numplot.h"
 
 void plot_number(WINDOW *scr, int value) {
-    switch (value) {
+    switch (value % 10) {
         case 0:
             mvwaddwstr(scr, 0, 0, L"┌─┐");
             mvwaddwstr(scr, 1, 0, L"│ │");
