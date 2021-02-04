@@ -2,6 +2,6 @@
 *~
 *.kdev4
 *.o
-/nttt
+/countdown
 /tests/main
 !.gitignore

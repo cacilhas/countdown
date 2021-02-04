@@ -39,4 +39,5 @@ void setup() {
 
 void teardown() {
     endwin();
+    system("fireworks");
 }
