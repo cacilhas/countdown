@@ -14,7 +14,7 @@ int main(int argc, const char *argv[]) {
     time_t duration = 60;
 
     if (argc > 1)
-        duration = min(atoi(argv[1]), 3600);
+        duration = min(atoi(argv[1]), 360000);
 
     WINDOW *stdscr;
     if ((stdscr = initscr()) == NULL) {

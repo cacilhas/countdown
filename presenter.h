@@ -7,11 +7,14 @@ typedef struct {
     WINDOW *stdscr;
     time_t  start, end, duration;
     int     width;
-    WINDOW *min1;
+    WINDOW *hour10;
+    WINDOW *hour1;
     WINDOW *min10;
-    WINDOW *sec1;
+    WINDOW *min1;
     WINDOW *sec10;
-    WINDOW *sep;
+    WINDOW *sec1;
+    WINDOW *sep1;
+    WINDOW *sep2;
     WINDOW *progbar;
 } state_t;
 
