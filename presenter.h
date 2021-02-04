@@ -15,6 +15,7 @@ typedef struct {
     WINDOW *sec1;
     WINDOW *sep1;
     WINDOW *sep2;
+    WINDOW *msec;
     WINDOW *progbar;
 } state_t;
 
