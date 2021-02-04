@@ -5,6 +5,7 @@
 #include "numplot.h"
 #include "presenter.h"
 #include "progbar.h"
+#include "randcolor.h"
 
 state_t *setup_window(WINDOW *scr, time_t duration) {
     state_t *state = malloc(sizeof(state_t));
@@ -17,7 +18,7 @@ state_t *setup_window(WINDOW *scr, time_t duration) {
 
     keypad(scr, TRUE);
     nodelay(scr, TRUE);
-    fromto(1, 5, id) init_rand_pair(id);
+    init_rand_pairs(5);
     wbkgdset(scr, COLOR_PAIR(1));
 
     state->hour10  = subwin(scr, 3, 3,  ly,   lx);
@@ -30,10 +31,16 @@ state_t *setup_window(WINDOW *scr, time_t duration) {
     state->sec1    = subwin(scr, 3, 3,  ly,   lx+17);
     state->msec    = subwin(scr, 1, 4,  ly+2, lx+20);
     state->progbar = subwin(scr, 3, 52, ly+4, (wi - 52) / 2);
-    wbkgdset(state->progbar, COLOR_PAIR(2));
-    wbkgdset(state->msec,    COLOR_PAIR(3));
-    wbkgdset(state->sep1,    COLOR_PAIR(4));
-    wbkgdset(state->sep2,    COLOR_PAIR(4));
+    wbkgdset(state->hour10,  COLOR_PAIR(2));
+    wbkgdset(state->hour1,   COLOR_PAIR(2));
+    wbkgdset(state->min10,   COLOR_PAIR(2));
+    wbkgdset(state->min1,    COLOR_PAIR(2));
+    wbkgdset(state->sec10,   COLOR_PAIR(2));
+    wbkgdset(state->sec1,    COLOR_PAIR(2));
+    wbkgdset(state->progbar, COLOR_PAIR(3));
+    wbkgdset(state->msec,    COLOR_PAIR(4));
+    wbkgdset(state->sep1,    COLOR_PAIR(5));
+    wbkgdset(state->sep2,    COLOR_PAIR(5));
 
     time(&state->start);
     state->duration = duration;
