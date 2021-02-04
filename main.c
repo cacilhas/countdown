@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include "k-utils.h"
+#include "argparse.h"
 #include "presenter.h"
 
 static void setup(void);
@@ -11,10 +11,7 @@ static void teardown(void);
 
 int main(int argc, const char *argv[]) {
     setlocale(LC_ALL, "");
-    time_t duration = 60;
-
-    if (argc > 1)
-        duration = min(atoi(argv[1]), 360000);
+    time_t duration = parse_args(argc, argv);
 
     WINDOW *stdscr;
     if ((stdscr = initscr()) == NULL) {
