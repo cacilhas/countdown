@@ -1,10 +1,17 @@
+ifeq ($(shell id -u), 0)
+PREFIX= /usr/local
+else
+PREFIX= $(HOME)/.local
+endif
+
 CC?= clang
 LD= $(CC)
+MD= mkdir -p
 RM= rm -f
 INSTALL= install --mode=0755 --strip
-DEST?= $(HOME)/.local/bin
 SOURCES= $(shell echo $(wildcard *.c) | sed 's/\<main\.c\>//')
 OBJECTS= $(SOURCES:.c=.o)
+DEST?= $(PREFIX)/bin
 TARGET= countdown
 
 CFLAGS= -D_XOPEN_SOURCE_EXTENDED $(shell pkg-config --cflags ncursesw) -fblocks --std=c99 -Wall
@@ -28,6 +35,10 @@ mrproper: clean
 
 $(TARGET): main.o $(OBJECTS)
 	$(LD) $^ $(LIBS) -o $@
+
+
+$(DEST):
+	$(MD) $@
 
 
 install: $(TARGET)
