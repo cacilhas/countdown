@@ -36,5 +36,8 @@ void setup() {
 
 void teardown() {
     endwin();
-    system("fireworks");
+    if (system("fish -ctrue") == 0)
+        system("fish -cfireworks");
+    else
+        system("fireworks");
 }
