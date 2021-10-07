@@ -53,7 +53,7 @@ void mainloop(state_t *state) {
     wclear(state->stdscr);
     box(state->stdscr,  0, 0);
     box(state->progbar, 0, 0);
-    const wchar_t *titles[] = {
+    static const wchar_t *titles[] = {
         L"⏳ COUNTDOWN ⌛",
         L"⏳ COUNTDOWN ⌛",
         L"⏳ COUNTDOWN ⏳",
